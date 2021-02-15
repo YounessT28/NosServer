@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Definition>
+	<Globals>
+		<Name Value="Tutorial Time-Space"/>
+		<Label Value="Welcome to the NosTale Time-Space Tutorial. Mini Mentor will accompany you through your first Time-Space mission and show you what these adventures are all about. Simply click on the 'Start' button and let's get this mission rolling!"/>
+		<LevelMinimum Value ="1"/>
+		<LevelMaximum Value ="99"/>
+		<Lives Value="1"/>
+		<DrawItems>
+			<Item VNum="2023" Amount="1"/>
+			<Item VNum="2024" Amount="1"/>
+			<Item VNum="2025" Amount="1"/>
+			<Item VNum="2026" Amount="1"/>
+			<Item VNum="2027" Amount="1"/>
+		</DrawItems>
+		<SpecialItems>
+			<Item VNum="2016" Amount="2"/>
+		</SpecialItems>
+		<GiftItems>
+			<Item VNum="13" Amount="1"/>
+		</GiftItems>
+		<Gold Value="1500"/>
+		<Reputation Value="50"/>
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="4100" IndexX="3" IndexY="11">
+			<OnCharacterDiscoveringMap>
+				<SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="0" ToMap="1" ToX="14" ToY="28"/>
+				<SendMessage Value=" This is the lobby." Type="0"/>
+				<NpcDialog Value="8004"/>
+			</OnCharacterDiscoveringMap>
+			<OnMoveOnMap>
+				<SendMessage Value="The mission starts as soon as you enter the first room." Type="0"/>
+				<GenerateClock Value="3000"/>
+				<StartClock/>
+			</OnMoveOnMap>
+		</CreateMap>
+		<CreateMap Map="1" VNum="4105" IndexX="3" IndexY="10">
+			<SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="0" ToMap="2" ToX="14" ToY="28"/>
+			<SpawnPortal IdOnMap="2" PositionX="14" PositionY="28" Type="0" ToMap="0" ToX="14" ToY="1"/>
+			<OnCharacterDiscoveringMap>
+				<NpcDialog Value="8005"/>
+			</OnCharacterDiscoveringMap>
+			<OnMoveOnMap>
+				<SummonMonster VNum="24" PositionX="13" PositionY="14" Move="true" IsBonus="true">
+					<OnDeath>
+						<SummonMonster VNum="24" PositionX="17" PositionY="12" Move="true" IsBonus="true"/>
+					</OnDeath>
+				</SummonMonster>
+			</OnMoveOnMap>
+		</CreateMap>
+		<CreateMap Map="2" VNum="4114" IndexX="3" IndexY="9">
+			<SpawnPortal IdOnMap="0" PositionX="14" PositionY="28" Type="1" ToMap="1" ToX="14" ToY="1"/>
+			<SpawnPortal IdOnMap="2" PositionX="14" PositionY="1" Type="1" ToMap="3" ToX="14" ToY="28"/>
+			<OnCharacterDiscoveringMap>
+				<NpcDialog Value="8006"/>
+			</OnCharacterDiscoveringMap>
+			<OnMoveOnMap>
+				<SendPacket Value="sinfo  You're under attack!"/>
+				<SendPacket Value="rsfm 0 2 0 0"/>
+				<GenerateClock Value="2910"/>
+				<SummonMonster VNum="333" PositionX="12" PositionY="13" Move="true" IsHostile="true">
+					<OnDeath>
+						<ChangePortalType IdOnMap="2" Type="2"/>
+						<RefreshMapItems/>
+						<SendMessage Value="A door has been opened." Type="0"/>
+						<NpcDialog Value="8007"/>
+					</OnDeath>
+				</SummonMonster>
+			</OnMoveOnMap>
+		</CreateMap>
+		<CreateMap Map="3" VNum="4100" IndexX="3" IndexY="8">
+			<SpawnPortal IdOnMap="0" PositionX="14" PositionY="28" Type="1" ToMap="2" ToX="14" ToY="1"/>
+			<SpawnPortal IdOnMap="2" PositionX="14" PositionY="1" Type="1" ToMap="4" ToX="14" ToY="28"/>
+			<OnCharacterDiscoveringMap>
+				<NpcDialog Value="8008"/>
+			</OnCharacterDiscoveringMap>
+			<SpawnButton Id="0" PositionX="14" PositionY="18" VNumEnabled="1045" VNumDisabled="1000">
+				<OnFirstEnable>
+					<SendMessage Value="The lever has been actuated." Type="0"/>
+					<SummonMonster VNum="24" PositionX="20" PositionY="15" Move="true" IsHostile="true"/>
+					<SummonMonster VNum="24" PositionX="5" PositionY="15" Move="true" IsHostile="true">
+						<OnDeath>
+							<SendPacket Value="sinfo  "/>
+						</OnDeath>
+					</SummonMonster>
+					<OnMapClean>
+						<ChangePortalType IdOnMap="2" Type="2"/>
+						<RefreshMapItems/>
+						<SendMessage Value="A door has been opened." Type="0"/>
+						<NpcDialog Value="8009"/>
+					</OnMapClean>
+				</OnFirstEnable>
+			</SpawnButton>
+		</CreateMap>
+		<CreateMap Map="4" VNum="4101" IndexX="3" IndexY="7">
+			<SpawnPortal IdOnMap="0" PositionX="14" PositionY="28" Type="1" ToMap="3" ToX="14" ToY="1"/>
+			<SpawnPortal IdOnMap="2" PositionX="14" PositionY="1" Type="1" ToMap="5" ToX="14" ToY="28"/>
+			<OnCharacterDiscoveringMap>
+				<NpcDialog Value="8010"/>
+				<GenerateMapClock Value="1200"/>
+			</OnCharacterDiscoveringMap>
+			<OnMoveOnMap>
+				<SendPacket Value="sinfo  Defeat all the enemies before the time runs out!"/>
+				<SummonMonster VNum="24" PositionX="11" PositionY="14" IsBonus="true" Move="true" IsHostile="true">
+					<OnDeath>
+						<SummonMonster VNum="24" PositionX="16" PositionY="17" IsBonus="true" Move="true" IsHostile="true">
+							<OnDeath>
+								<StopMapClock/>
+							</OnDeath>
+						</SummonMonster>
+					</OnDeath>
+				</SummonMonster>
+				<StartMapClock>
+					<OnStop>
+						<ChangePortalType IdOnMap="2" Type="2"/>
+						<RefreshMapItems/>
+						<SendPacket Value="sinfo  "/>
+						<SendMessage Value="A door has been opened." Type="0"/>
+					</OnStop>
+					<OnTimeout>
+						<End Type="1"/>
+					</OnTimeout>
+				</StartMapClock>
+			</OnMoveOnMap>
+		</CreateMap>
+		<CreateMap Map="5" VNum="4102" IndexX="3" IndexY="6">
+			<SpawnPortal IdOnMap="0" PositionX="14" PositionY="28" Type="1" ToMap="4" ToX="14" ToY="1"/>
+			<SpawnPortal IdOnMap="2" PositionX="14" PositionY="1" Type="1" ToMap="6" ToX="14" ToY="28"/>
+			<OnCharacterDiscoveringMap>
+				<NpcDialog Value="8013"/>
+				<SendPacket Value="sinfo  Protect NosVille's guard and kill all monsters!"/>
+				<SummonNpc VNum="320" PositionX="14" PositionY="14" Move="true" IsProtected="true">
+					<OnDeath>
+						<End Type="2"/>
+					</OnDeath>
+				</SummonNpc>
+				<OnMoveOnMap>
+					<SummonMonster VNum="24" PositionX="15" PositionY="12" Move="true" IsHostile="true"/>
+					<SummonMonster VNum="24" PositionX="11" PositionY="14" IsBonus="true" Move="true" IsHostile="true">
+						<OnDeath/>
+					</SummonMonster>
+					<OnMapClean>
+						<ChangePortalType IdOnMap="2" Type="2"/>
+						<RefreshMapItems/>
+						<SendPacket Value="sinfo  "/>
+						<SendMessage Value="A door has been opened." Type="0"/>
+						<SendMessage Value="The NosVille's guard is safe!" Type="0"/>
+						<NpcDialog Value="8010"/>
+					</OnMapClean>
+				</OnMoveOnMap>
+			</OnCharacterDiscoveringMap>
+		</CreateMap>
+		<CreateMap Map="6" VNum="4103" IndexX="3" IndexY="5">
+			<SpawnPortal IdOnMap="0" PositionX="14" PositionY="28" Type="1" ToMap="5" ToX="14" ToY="1"/>
+			<SpawnPortal IdOnMap="2" PositionX="14" PositionY="1" Type="5" ToMap="-1">
+				<OnTraversal>
+					<End Type="5"/>
+				</OnTraversal>
+			</SpawnPortal>
+			<OnCharacterDiscoveringMap>
+				<NpcDialog Value="8011"/>
+			</OnCharacterDiscoveringMap>
+			<OnMoveOnMap>
+				<SummonMonster VNum="24" PositionX="19" PositionY="12" Move="true" IsHostile="true"/>
+				<SummonMonster VNum="333" PositionX="15" PositionY="17" Move="true" IsHostile="true"/>
+				<OnMapClean>
+					<ChangePortalType IdOnMap="2" Type="4"/>
+					<RefreshMapItems/>
+					<SendMessage Value="A door has been opened." Type="0"/>
+					<NpcDialog Value="8012"/>
+				</OnMapClean>
+			</OnMoveOnMap>
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

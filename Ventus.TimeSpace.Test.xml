@@ -1,0 +1,156 @@
+<Definition>
+  <Globals>
+    <Label Value="NosTale Ventus - Tom TimeSpace" />
+    <Title Value="The Time-Space" />
+    <LevelMinimum Value="5" />
+    <LevelMaximum Value="99" />
+    <Lives Value="1" />
+    <RequieredItems>
+      <Item VNum="1012" Amount="0" />
+    </RequieredItems>
+    <DrawItems>
+      <Item VNum="2015" Amount="2" />
+      <Item VNum="2023" Amount="10" />
+    </DrawItems>
+    <SpecialItems>
+      <Item VNum="202" Amount="1" />
+    </SpecialItems>
+    <GiftItems>
+      <Item VNum="3" Amount="1" />
+    </GiftItems>
+  </Globals>
+  <InstanceEvents>
+    <CreateMap Map="1" VNum="4100" IndexX="0" IndexY="8">
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="15" Type="0" ToMap="2" ToX="1" ToY="14" />
+    </CreateMap>
+    <CreateMap Map="2" VNum="4101" IndexX="0" IndexY="8">
+      <OnCharacterDiscoveringMap>
+        <NpcDialog Value="6000" />
+      </OnCharacterDiscoveringMap>
+      <GenerateClock Value="3000" />
+      <StartClock />
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="15" Type="0" ToMap="3" ToX="1" ToY="14" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="14" Type="0" ToMap="1" ToX="28" ToY="15" />
+    </CreateMap>
+    <CreateMap Map="3" VNum="4102" IndexX="1" IndexY="8">
+      <OnCharacterDiscoveringMap>
+        <NpcDialog Value="6001" />
+      </OnCharacterDiscoveringMap>
+      <OnMapClean>
+        <ChangePortalType IdOnMap="1" Type="2" />
+        <RefreshMapItems />
+      </OnMapClean>
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="14" Type="1" ToMap="4" ToX="1" ToY="15" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="14" Type="1" ToMap="1" ToX="28" ToY="15" />
+      <!-- Npcs -->
+      <SummonNpc VNum="320" PositionX="11" PositionY="15" />
+      <SummonNpc VNum="319" PositionX="7" PositionY="15" />
+      <SummonNpc VNum="823" PositionX="9" PositionY="13" />
+      <!-- Monsters -->
+      <SummonMonster VNum="30" PositionX="9" PositionY="14" IsBonus="True">
+        <OnDeath>
+          <SummonMonster VNum="30" PositionX="19" PositionY="15" IsBonus="True">
+            <OnDeath>
+              <SummonMonster VNum="26" PositionX="20" PositionY="20" IsBonus="True">
+                <OnDeath>
+                  <SummonMonster VNum="31" PositionX="16" PositionY="9" IsBonus="True" />
+                </OnDeath>
+              </SummonMonster>
+            </OnDeath>
+          </SummonMonster>
+        </OnDeath>
+      </SummonMonster>
+    </CreateMap>
+    <CreateMap Map="4" VNum="4103" IndexX="2" IndexY="8">
+      <OnCharacterDiscoveringMap>
+        <NpcDialog Value="6002" />
+        <SummonMonster VNum="26" PositionX="12" PositionY="11" IsBonus="True">
+          <OnDeath>
+            <SummonMonster VNum="31" PositionX="16" PositionY="7" IsBonus="True">
+              <OnDeath>
+                <SummonMonster VNum="31" PositionX="9" PositionY="14" IsBonus="True" />
+              </OnDeath>
+            </SummonMonster>
+          </OnDeath>
+        </SummonMonster>
+      </OnCharacterDiscoveringMap>
+      <OnMapClean>
+        <ChangePortalType IdOnMap="2" Type="2" />
+        <AddClockTime Value="3" />
+        <RefreshMapItems />
+      </OnMapClean>
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="2" PositionX="14" PositionY="28" Type="1" ToMap="5" ToX="14" ToY="1" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="15" Type="1" ToMap="1" ToX="28" ToY="14" />
+      <!-- Npcs -->
+      <SummonNpc VNum="319" PositionX="3" PositionY="15" />
+      <SummonNpc VNum="823" PositionX="1" PositionY="14" />
+      <SummonNpc VNum="320" PositionX="7" PositionY="16" />
+    </CreateMap>
+    <CreateMap Map="5" VNum="4104" IndexX="3" IndexY="8">
+      <OnCharacterDiscoveringMap>
+      </OnCharacterDiscoveringMap>
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="0" ToMap="1" ToX="14" ToY="28" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="15" Type="0" ToMap="6" ToX="28" ToY="15" />
+      <!-- Npcs -->
+      <SummonNpc VNum="319" PositionX="15" PositionY="3" />
+      <SummonNpc VNum="823" PositionX="16" PositionY="2" />
+    </CreateMap>
+    <CreateMap Map="6" VNum="4105" IndexX="3" IndexY="9">
+      <OnMapClean>
+        <ChangePortalType IdOnMap="3" Type="2" />
+        <AddClockTime Value="3" />
+        <NpcDialog Value="6003" />
+        <RefreshMapItems />
+      </OnMapClean>
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="15" Type="1" ToMap="1" ToX="1" ToY="15" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="14" Type="1" ToMap="7" ToX="28" ToY="15" />
+      <!-- Npcs -->
+      <SummonNpc VNum="319" PositionX="28" PositionY="13" />
+      <SummonNpc VNum="823" PositionX="28" PositionY="15" />
+      <!-- Monsters -->
+      <SummonMonster VNum="31" PositionX="19" PositionY="14">
+        <OnDeath>
+          <SummonMonster VNum="26" PositionX="18" PositionY="21" IsBonus="True" />
+          <SummonMonster VNum="26" PositionX="20" PositionY="8" IsBonus="True" />
+        </OnDeath>
+      </SummonMonster>
+    </CreateMap>
+    <CreateMap Map="7" VNum="4106" IndexX="2" IndexY="9">
+      <OnCharacterDiscoveringMap>
+        <NpcDialog Value="6004" />
+        <ChangePortalType IdOnMap="3" Type="4" />
+        <RefreshMapItems />
+      </OnCharacterDiscoveringMap>
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="15" Type="0" ToMap="1" ToX="1" ToY="14" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="15" Type="5" ToMap="1" ToX="0" ToY="0" />
+      <!-- Npcs -->
+      <SummonNpc VNum="319" PositionX="28" PositionY="14" />
+      <SummonNpc VNum="823" PositionX="26" PositionY="14" />
+      <!-- Buttons -->
+      <SpawnButton PositionX="15" PositionY="15" VNumDisabled="1000" VNumEnabled="1045" Id="0">
+        <OnFirstEnable>
+          <ChangePortalType IdOnMap="3" Type="2" />
+          <RefreshMapItems />
+          <RefreshMapItems />
+        </OnFirstEnable>
+      </SpawnButton>
+      <!-- Monsters -->
+      <SummonMonster VNum="26" PositionX="14" PositionY="21" IsBonus="True">
+        <OnDeath>
+          <SummonMonster VNum="31" PositionX="16" PositionY="6" IsBonus="True">
+            <OnDeath>
+              <SummonMonster VNum="26" PositionX="13" PositionY="8" IsBonus="True" />
+            </OnDeath>
+          </SummonMonster>
+        </OnDeath>
+      </SummonMonster>
+    </CreateMap>
+  </InstanceEvents>
+</Definition>

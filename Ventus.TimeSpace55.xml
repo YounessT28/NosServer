@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Definition>
+	<Globals>
+		<Name Value="NosTale Ventus - TS55"/>
+		<Label Value="The last battle is awaiting you. Stop the Dryads and Kenel!"/>
+		<LevelMinimum Value ="55"/>
+		<LevelMaximum Value ="99"/>
+		<Lives Value="2"/>
+		<DrawItems>
+			<Item VNum="2023" Amount="1"/>
+		</DrawItems>
+		<SpecialItems>
+			<Item VNum="2023" Amount="1"/>
+		</SpecialItems>
+		<GiftItems>
+			<Item VNum="2023" Amount="1"/>
+		</GiftItems>
+		<Gold Value="250000"/>
+		<Reputation Value="2500"/>
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="4100" IndexX="3" IndexY="11">
+			<OnCharacterDiscoveringMap>
+				<SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="0" ToMap="1" ToX="10" ToY="13"/>
+				<SendMessage Value="Prepare for a hard fight!" Type="0"/>
+			</OnCharacterDiscoveringMap>
+			<OnMoveOnMap>
+				<SendMessage Value="The mission starts as soon as you enter the first room." Type="0"/>
+				<GenerateClock Value="3000"/>
+				<StartClock/>
+			</OnMoveOnMap>
+		</CreateMap>
+		<CreateMap Map="1" VNum="4500" IndexX="10" IndexY="13">
+			<SpawnPortal IdOnMap="2" PositionX="8" PositionY="25" Type="5" ToMap="-1">
+				<OnTraversal>
+					<End Type="5"/>
+				</OnTraversal>
+			</SpawnPortal>
+			<OnMoveOnMap>
+				<SummonMonster VNum="155" PositionX="23" PositionY="10" Move="true" IsHostile="true"/>
+				<SummonMonster VNum="155" PositionX="30" PositionY="18" Move="true" IsHostile="true"/>
+				<SummonMonster VNum="155" PositionX="28" PositionY="27" Move="true" IsHostile="true"/>
+				<SummonMonster VNum="155" PositionX="22" PositionY="32" Move="true" IsHostile="true"/>
+				<SummonMonster VNum="329" PositionX="11" PositionY="33" Move="true" IsHostile="true" IsBoss="true"/>
+				<OnMapClean>
+					<ChangePortalType IdOnMap="2" Type="4"/>
+					<RefreshMapItems/>
+					<SendMessage Value="The exit has been unlocked" Type="0"/>
+				</OnMapClean>
+			</OnMoveOnMap>
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

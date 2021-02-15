@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Definition>
+	<Globals>
+		<Name Value="NosTale Ventus - SP1"/>
+		<Label Value="Defeat the Giant Jelly"/>
+		<LevelMinimum Value ="36"/>
+		<LevelMaximum Value ="99"/>
+		<Lives Value="2"/>
+		<DrawItems>
+		</DrawItems>
+		<SpecialItems>
+		</SpecialItems>
+		<GiftItems>
+		</GiftItems>
+		<Gold Value="15000"/>
+		<Reputation Value="250"/>
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="4100" IndexX="3" IndexY="11">
+			<OnCharacterDiscoveringMap>
+				<SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="0" ToMap="1" ToX="15" ToY="27"/>
+				<SendMessage Value="Prepare for a hard fight!" Type="0"/>
+			</OnCharacterDiscoveringMap>
+			<OnMoveOnMap>
+				<SendMessage Value="The mission starts as soon as you enter the first room." Type="0"/>
+				<GenerateClock Value="3000"/>
+				<StartClock/>
+			</OnMoveOnMap>
+		</CreateMap>
+		<CreateMap Map="1" VNum="4110" IndexX="14" IndexY="27">
+			<SpawnPortal IdOnMap="2" PositionX="15" PositionY="2" Type="5" ToMap="-1">
+				<OnTraversal>
+					<End Type="5"/>
+				</OnTraversal>
+			</SpawnPortal>
+			<OnMoveOnMap>
+				<SummonMonster VNum="723" PositionX="15" PositionY="17" Move="true" IsHostile="true" IsBoss="true"/>
+				<OnMapClean>
+					<ChangePortalType IdOnMap="2" Type="4"/>
+					<RefreshMapItems/>
+					<SendMessage Value="The exit has been unlocked" Type="0"/>
+				</OnMapClean>
+			</OnMoveOnMap>
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

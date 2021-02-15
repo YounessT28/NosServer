@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Definition>
+  <Globals>
+    <Id Value="34" />
+    <Label Value="Land of Death" />
+    <DailyEntries Value="30" />
+    <LevelMinimum Value="55"/>
+    <LevelMaximum Value="99"/>
+    <StartX Value="150" />
+    <StartY Value="150" />
+    <Reputation Value="15000" />
+    <RequiredItems>
+      <Item VNum="1057" Amount="1"/>
+    </RequiredItems>
+    <GiftItems>
+      <Item Amount="1" VNum="302" Design="26" IsRandomRare="true"/>
+    </GiftItems>
+  </Globals>
+  <InstanceEvents>
+    <CreateMap Map="0" VNum="150">
+      <SetMonsterLockers Value="0" />
+      <SetButtonLockers Value="0" />
+        <OnDeath>
+        </OnDeath>
+    </CreateMap>
+  </InstanceEvents>
+</Definition>

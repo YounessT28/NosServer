@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Definition>
+  <Globals>
+    <Name Value="NosTale Ventus - Land of Death"/>
+    <Label Value="You'll get 60 Minutes to EXP alone or in a Group of 3 Persons. Good luck!"/>
+    <LevelMinimum Value ="55"/>
+    <LevelMaximum Value ="99"/>
+    <Lives Value="2"/>
+    <DrawItems>
+    </DrawItems>
+    <SpecialItems>
+    </SpecialItems>
+    <GiftItems>
+    </GiftItems>
+    <Gold Value="1500"/>
+    <Reputation Value="250"/>
+  </Globals>
+  <InstanceEvents>
+    <CreateMap Map="0" VNum="4100" IndexX="3" IndexY="11">
+      <OnCharacterDiscoveringMap>
+        <SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="0" ToMap="1" ToX="150" ToY="150"/>
+        <SendMessage Value="Prepare for a hard fight!" Type="0"/>
+      </OnCharacterDiscoveringMap>
+      <OnMoveOnMap>
+        <SendMessage Value="The mission starts as soon as you enter the first room." Type="0"/>
+        <GenerateClock Value="36000"/>
+        <StartClock/>
+      </OnMoveOnMap>
+    </CreateMap>
+    <CreateMap Map="1" VNum="150" IndexX="150" IndexY="150">
+        <OnTraversal>
+          <End Type="5"/>
+        </OnTraversal>
+      <OnMoveOnMap>
+        <SummonMonster VNum="439" PositionX="120" PositionY="132" Move="true" ShouldRespawn="true"/>
+        <OnMapClean>
+        </OnMapClean>
+      </OnMoveOnMap>
+    </CreateMap>
+  </InstanceEvents>
+</Definition>
