@@ -122,6 +122,66 @@ namespace OpenNos.GameObject.Event
             Guardians.Add(new MapMonster
             {
                 MonsterVNum = (short)(678 + faction),
+                MapX = 193,
+                MapY = 189,
+                MapId = 134,
+                Position = 2,
+                IsMoving = false,
+                MapMonsterId = bitoren.GetNextMonsterId(),
+                ShouldRespawn = false,
+                IsHostile = true
+            });
+            Guardians.Add(new MapMonster
+            {
+                MonsterVNum = (short)(678 + faction),
+                MapX = 193,
+                MapY = 182,
+                MapId = 134,
+                Position = 2,
+                IsMoving = false,
+                MapMonsterId = bitoren.GetNextMonsterId(),
+                ShouldRespawn = false,
+                IsHostile = true
+            });
+            Guardians.Add(new MapMonster
+            {
+                MonsterVNum = (short)(678 + faction),
+                MapX = 199,
+                MapY = 182,
+                MapId = 134,
+                Position = 2,
+                IsMoving = false,
+                MapMonsterId = bitoren.GetNextMonsterId(),
+                ShouldRespawn = false,
+                IsHostile = true
+            });
+            Guardians.Add(new MapMonster
+            {
+                MonsterVNum = (short)(678 + faction),
+                MapX = 204,
+                MapY = 182,
+                MapId = 134,
+                Position = 2,
+                IsMoving = false,
+                MapMonsterId = bitoren.GetNextMonsterId(),
+                ShouldRespawn = false,
+                IsHostile = true
+            });
+            Guardians.Add(new MapMonster
+            {
+                MonsterVNum = (short)(678 + faction),
+                MapX = 204,
+                MapY = 189,
+                MapId = 134,
+                Position = 2,
+                IsMoving = false,
+                MapMonsterId = bitoren.GetNextMonsterId(),
+                ShouldRespawn = false,
+                IsHostile = true
+            });
+            Guardians.Add(new MapMonster
+            {
+                MonsterVNum = (short)(678 + faction),
                 MapX = 132,
                 MapY = 88,
                 MapId = 134,
